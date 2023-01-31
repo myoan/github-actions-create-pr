@@ -19,9 +19,11 @@ jobs:
     - name: Create Pull Request
       uses: vsoch/pull-request-action@1.0.15
       env:
-        GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         PULL_REQUEST_BRANCH: ${{ env.TARGET_BRANCH }}
         PULL_REQUEST_FROM_BRANCH: feature/${{ github.run_id }}/${{ github.run_number }}
         PULL_REQUEST_TITLE: "generated PR"
         ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+      with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
 
