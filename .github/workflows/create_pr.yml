@@ -1,0 +1,27 @@
+name: "create PR"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  create_pull_request:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      TARGET_BRANCH: release
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Create HEAD branch
+      run: |
+        git switch -C feature/$GITHUB_RUN_ID/$GITHUB_RUN_NUMBER
+        git push origin feature/$GITHUB_RUN_ID/$GITHUB_RUN_NUMBER
+    - name: Create Pull Request
+      uses: vsoch/pull-request-action@1.0.15
+      env:
+        GITHUB_TOKEN: ${{ secrets.REPO_SCOPED_GITHUB_TOKEN }}
+        PULL_REQUEST_BRANCH: ${{ env.TARGET_BRANCH }}
+        PULL_REQUEST_FROM_BRANCH: feature/${{ github.run_id }}/${{ github.run_number }}
+        PULL_REQUEST_TITLE: "generated PR"
+        ACTIONS_ALLOW_UNSECURE_COMMANDS: true
+
