@@ -14,6 +14,8 @@ jobs:
       id: edit
       run: |
         echo "hogehoge" > output.txt
+        echo "fugafuga" > output.txt
+        echo "hogehoge" > output.txt
         echo "result<<EOF" >> $GITHUB_OUTPUT
         echo "$(cat output.txt)" >> $GITHUB_OUTPUT
         echo "EOF" >> $GITHUB_OUTPUT
