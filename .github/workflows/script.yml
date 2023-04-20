@@ -1,4 +1,4 @@
-name: "create PR"
+name: "set output"
 
 on:
   push:
