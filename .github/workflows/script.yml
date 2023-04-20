@@ -13,6 +13,7 @@ jobs:
     - name: set result
       run: |
         ruby main.rb > output.txt 2>&1 || echo $? > exitcode.txt
+        cat output.txt
         echo "result<<EOF" >> $GITHUB_OUTPUT
         cat output.txt >> $GITHUB_OUTPUT
         echo "EOF" >> $GITHUB_OUTPUT
