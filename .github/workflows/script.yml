@@ -12,9 +12,7 @@ jobs:
     steps:
     - name: set result
       run: |
-        echo "hoge" >> output.txt
-        echo "hoge" >> output.txt
-        echo "hoge" >> output.txt
+        ruby main.rb > output.txt 2>&1 || echo $? > exitcode.txt
         echo "result<<EOF" >> $GITHUB_OUTPUT
         cat output.txt >> $GITHUB_OUTPUT
         echo "EOF" >> $GITHUB_OUTPUT
