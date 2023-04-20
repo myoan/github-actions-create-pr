@@ -18,4 +18,4 @@ jobs:
           const value = 'Hello\nWorld'
           core.setOutput(name, value)
     - name: get result
-      run: echo ${{ steps.edit.outputs.greeting }}
+      run: echo "${{ steps.edit.outputs.greeting }}"
