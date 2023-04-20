@@ -1,8 +1,9 @@
 name: "create PR"
 
 on:
-  pull_request:
-    types: [opened, synchronize, edited, reopened]
+  push:
+    branches:
+      - main
 
 jobs:
   create_pull_request:
