@@ -10,13 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-    - name: Create HEAD branch
-      id: edit
-      uses: actions/github-script@v6
-      with:
-        script: |
-          const value = 'Hello\nWorld!'
-          core.setOutput('result', value)
-        result-encoding: string
+    - name: set result
+      run: |
+        echo "hogehoge" > output.txt
+        echo "result<<EOF" >> $GITHUB_OUTPUT
+        echo "$(cat output.txt)" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
     - name: get result
       run: echo ${{ steps.edit.outputs.result }}
