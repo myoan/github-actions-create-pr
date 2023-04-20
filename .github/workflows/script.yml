@@ -10,12 +10,13 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
-    - uses: actions/github-script@v6
-      id: edit
-      with:
-        script: |
-          const name = 'greeting'
-          const value = 'Hello\nWorld'
-          core.setOutput(name, value)
+    - name: set result
+      run: |
+        echo "hoge" >> output.txt
+        echo "hoge" >> output.txt
+        echo "hoge" >> output.txt
+        echo "result<EOF" >> $GITHUB_TOKEN
+        cat output.txt >> $GITHUB_TOKEN
+        echo "EOF" >> $GITHUB_TOKEN
     - name: get result
       run: echo "${{ steps.edit.outputs.greeting }}"
