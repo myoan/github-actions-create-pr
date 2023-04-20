@@ -1,0 +1,21 @@
+name: "create PR"
+
+on:
+  pull_request:
+    types: [opened, synchronize, edited, reopened]
+
+jobs:
+  create_pull_request:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+    - name: Create HEAD branch
+      id: edit
+      use: actions/github-script@v6
+      with:
+        script: |
+          const value = 'Hello\nWorld!'
+          core.setOutput('result', value)
+        result-encoding: string
+    - name: get result
+      run: echo ${{ steps.edit.outputs.result }}
