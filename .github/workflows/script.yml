@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 5
     steps:
+    - name: checkout
+      uses: actions/checkout@v3
     - name: set result
       run: |
         ruby main.rb > output.txt 2>&1 || echo $? > exitcode.txt
