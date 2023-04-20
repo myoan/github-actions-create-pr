@@ -11,6 +11,7 @@ jobs:
     timeout-minutes: 5
     steps:
     - name: set result
+      id: edit
       run: |
         echo "hogehoge" > output.txt
         echo "result<<EOF" >> $GITHUB_OUTPUT
