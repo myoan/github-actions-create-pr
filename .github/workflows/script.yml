@@ -20,4 +20,4 @@ jobs:
         cat output.txt >> $GITHUB_OUTPUT
         echo "EOF" >> $GITHUB_OUTPUT
     - name: get result
-      run: echo "${{ steps.edit.outputs.greeting }}"
+      run: echo "${{ steps.edit.outputs.result }}"
