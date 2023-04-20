@@ -15,8 +15,8 @@ jobs:
         echo "hoge" >> output.txt
         echo "hoge" >> output.txt
         echo "hoge" >> output.txt
-        echo "result<EOF" >> $GITHUB_TOKEN
-        cat output.txt >> $GITHUB_TOKEN
-        echo "EOF" >> $GITHUB_TOKEN
+        echo "result<EOF" >> $GITHUB_OUTPUT
+        cat output.txt >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
     - name: get result
       run: echo "${{ steps.edit.outputs.greeting }}"
